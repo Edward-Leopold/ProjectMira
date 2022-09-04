@@ -101,7 +101,7 @@ a{
         text-transform: uppercase;
     }
     &_margin{
-        margin:16px 0;
+        margin:20px 0;
     }
 }
 
@@ -188,6 +188,7 @@ a{
     &__text{
         font-style: italic;
         text-align: center;
+        max-width: 80%;
         &_mira{
             margin-bottom: 20px;
         }
@@ -407,8 +408,8 @@ a{
         // элементу с этим классом добавляется zoom
         padding: 0;
     }
+    // обертка
     .wrap{
-        
         padding-left: 15px;
         padding-right: 15px;
     }
@@ -505,16 +506,22 @@ a{
             }
         }
     }
+    .block-img__text{
+        max-width: initial;
+    }
     .block-img__img_pilot{
         object-fit: cover;
         width: initial;
     }
+    // убираем машинку, которая едет из-за границ экрана
     #carAnim{
         display: none;
     }
+    // добавляем статичную машинку в текст
     #carStatic{
         display: inline;
     }
+    // растягиваем по ширине картинку с табличкой из Excel
     #table-1-img{
         max-width: initial;
     }

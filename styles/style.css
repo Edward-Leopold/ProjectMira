@@ -71,7 +71,7 @@ a:hover {
   text-transform: uppercase;
 }
 .title-main_margin {
-  margin: 16px 0;
+  margin: 20px 0;
 }
 
 .paragraph-main {
@@ -150,6 +150,7 @@ a:hover {
 .block-img__text {
   font-style: italic;
   text-align: center;
+  max-width: 80%;
 }
 .block-img__text_mira {
   margin-bottom: 20px;
@@ -428,6 +429,9 @@ a:hover {
   .dialog__list li {
     padding-left: 17px;
     margin-top: 7px;
+  }
+  .block-img__text {
+    max-width: initial;
   }
   .block-img__img_pilot {
     -o-object-fit: cover;
