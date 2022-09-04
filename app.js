@@ -7,14 +7,13 @@ const content = document.querySelector('#main');
 // получаем Body из DOM
 const bodyNode = document.body || document.getElementsByTagName('body')[0];
 const zoom = (page) => {
-    if (window.innerWidth < 600) {
+    if (window.innerWidth < 1024) {
         return null
     }
     // Ограничение высоты body
     bodyNode.style.height = `${content.offsetHeight * (window.innerWidth / 1024)}px`;
     page.style.transform = `scale(${window.innerWidth / 1024})`;
     page.style.transformOrigin = "center 0";
-    bodyNode.style.height = `${content.offsetHeight * (window.innerWidth / 1024)}px`;
 
 }   
 
@@ -154,32 +153,62 @@ const talkBox = document.querySelector('#talk');
 const talking = document.querySelector('#talkText');
 const speechs = talking.querySelectorAll('.talk__speech');
 
-// Первый мужчина
-gsap.fromTo(man1, {opacity: 0}, {
-    scrollTrigger: {
-        trigger: talkBox,
-        start: "top center",
-        end: "bottom center",
-        scrub: 0.1,
-    }, 
-    opacity: 10,
-    y: () => `+=${talkBox.offsetHeight - man1.offsetHeight}`,
-    ease: 'linear'
-})
-// Второй мужчина
-gsap.fromTo(man2, {opacity: 0}, {
-    scrollTrigger: {
-        trigger: talkBox,
-        start: "top center",
-        end: "bottom center",
-        scrub: 0.1,
-    }, 
-    opacity: 10,
-    y: () => `+=${talkBox.offsetHeight - man2.offsetHeight}`,
-    ease: 'linear'
-})
+// При ширине ниже 600 мужики видны сразу
+if (window.innerWidth < 600) {
+    // Первый мужчина
+    gsap.to(man1, {
+        scrollTrigger: {
+            trigger: talkBox,
+            start: "top center",
+            end: "bottom center",
+            scrub: 0.1,
+        }, 
+        y: () => `+=${talkBox.offsetHeight - man1.offsetHeight}`,
+        ease: 'linear'
+    })
+    // Второй мужчина
+    gsap.to(man2, {
+        scrollTrigger: {
+            trigger: talkBox,
+            start: "top center",
+            end: "bottom center",
+            scrub: 0.1,
+        },
+        y: () => `+=${talkBox.offsetHeight - man2.offsetHeight}`,
+        ease: 'linear'
+    })
+} else{
+    // При ширине больше 600 мужики появляются плавно из opacity: 0
+        // Первый мужчина
+    gsap.fromTo(man1, {opacity: 0}, {
+        scrollTrigger: {
+            trigger: talkBox,
+            start: "top center",
+            end: "bottom center",
+            scrub: 0.1,
+        }, 
+        opacity: 10,
+        y: () => `+=${talkBox.offsetHeight - man1.offsetHeight}`,
+        ease: 'linear'
+    })
+    // Второй мужчина
+    gsap.fromTo(man2, {opacity: 0}, {
+        scrollTrigger: {
+            trigger: talkBox,
+            start: "top center",
+            end: "bottom center",
+            scrub: 0.1,
+        }, 
+        opacity: 10,
+        y: () => `+=${talkBox.offsetHeight - man2.offsetHeight}`,
+        ease: 'linear'
+    })
+}
+
+
 // Сам разговор
 
+// реплики видны сразу при ширине больше 600px 
 if (window.innerWidth >= 600) {
     speechs.forEach(speech => gsap.fromTo(speech, {opacity: 0}, {
         scrollTrigger: {

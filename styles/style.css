@@ -46,6 +46,8 @@ a:hover {
 
 .page-content {
   padding: 20px 0;
+  overflow-x: hidden;
+  width: 100vw;
 }
 
 .content-box {
@@ -431,7 +433,7 @@ a:hover {
     margin-top: 7px;
   }
   .block-img__text {
-    max-width: initial;
+    max-width: 400px;
   }
   .block-img__img_pilot {
     -o-object-fit: cover;
@@ -448,8 +450,9 @@ a:hover {
     max-width: initial;
   }
   #message {
-    max-width: 90%;
+    max-width: 400px;
     margin: 0 auto;
+    padding: 0 15px;
   }
   .talk #talk-1 {
     left: initial;
@@ -467,6 +470,8 @@ a:hover {
   }
   .conclusion__body {
     padding: 10px 15px 10px;
+    max-width: 440px;
+    margin: 0 auto;
   }
   .conclusion #miraHead {
     display: none;
